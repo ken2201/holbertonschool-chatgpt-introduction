@@ -19,6 +19,24 @@ def factorial(n):
         return n * factorial(n-1)
 
 
-# Calcul du factoriel du nombre passé en argument depuis la ligne de commande
-f = factorial(int(sys.argv[1]))
-print(f)
+if __name__ == "__main__":
+    try:
+        # Vérifier si un argument est passé
+        if len(sys.argv) < 2:
+            raise ValueError(
+                "Erreur : Veuillez fournir un nombre entier en argument.")
+
+        # Convertir l'argument en entier
+        n = int(sys.argv[1])
+
+        # Vérifier que l'entier est non négatif
+        if n < 0:
+            raise ValueError(
+                "Erreur : Le nombre doit être un entier non négatif.")
+
+        # Calculer et afficher le factoriel
+        f = factorial(n)
+        print(f)
+
+    except ValueError as e:
+        print(e)
